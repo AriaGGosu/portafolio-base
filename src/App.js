@@ -1,43 +1,35 @@
 import React from 'react';
 import logo from './img/logo.svg';
 import './App.scss';
+import Nav from './components/Nav';
+import Sections from './components/Sections';
 import BongoCat from './components/BongoCat';
+
+document.querySelectorAll('a[href^="#"]').forEach(elem => {
+  elem.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(elem.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth',
+          offsetTop: 20
+      });
+  });
+});
+
 
 function App() {
   return (
     <div className="all">
+        {/* first row */}
 
-      <div className="container-fluid">
-        <div className="row"> 
-          <div className="col-12 col-sm-6">
 
-            <div className="row">
-              <div className="col-3">
-                <img src={logo} className="App-logo" alt="logo" />
-              </div>
-              <div className="col-3">
-                <img src={logo} className="App-logo" alt="logo" />
-              </div>
-              <div className="col-3">
-                <img src={logo} className="App-logo" alt="logo" />
-              </div>
-              <div className="col-3">
-                <img src={logo} className="App-logo" alt="logo" />
-              </div>             
-            </div>
-
+        {/* second row */}
+        <div className="row">
+          <div className="col-12">
+            <Nav/>
+            <Sections/>
           </div>
-
-          <div className="col-12 col-sm-6">
-            <BongoCat/>
-          </div>
-
         </div>
       </div>
-
-
-
-    </div>
   );
 }
 
